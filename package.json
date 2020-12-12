@@ -1,20 +1,45 @@
 {
   "name": "electron-auto-update-example",
-  "version": "1.0.1",
+  "version": "1.0.4",
   "description": "",
   "main": "main.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/sandeepsn1997/electron-update.git"
+    "url": "https://github.com/sandeepsn1997/electron_update.git"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "electron .",
     "build": "electron-builder build --win --publish never",
-    "deploy": "electron-builder build --win --publish always"
+    "deploy": "electron-builder build --win --publish=always"
   },
   "author": "",
   "license": "ISC",
+  "build": {
+    "appId": "com.example.ElectronAutoUpdate",
+    "productName": "Electron Auto Update",
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "sandeepsn1997",
+        "repo": "electron_update"
+      }
+    ],
+    "win": {
+      "publish": [
+        "github"
+      ],
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64",
+            "ia32"
+          ]
+        }
+      ]
+    }
+  },
   "devDependencies": {
     "electron": "^5.0.1",
     "electron-builder": "^20.40.2"
